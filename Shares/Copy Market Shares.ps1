@@ -92,4 +92,15 @@ switch ($copyType)
 
             if ($error_flag -eq $true) { Write-Host -fore Red 'ВНИМАНИЕ! ПРИ ВЫПОЛНЕНИИ СКРИПТА БЫЛИ ОБНАРУЖЕНЫ ОШИБКИ, ПРОВЕРЬТЕ ВЫВОД!' }
         }
+    ('All') {
+            #Составляем список сетевых директорий которые будут скопированы
+            Write-Host -fore Green 'Будут скопированны следующие сетевые директории:'
+            foreach ($remoteShare in $remoteShares) {  
+                if ($remoteShare.Name -like 'C:\Windows' -Or $remoteShare.Name -like '*:\') {
+                    Write-Host -fore Green $remoteShare.Path   
+                }
+            }
+            Write-Host '==================================================================================='
+
+        }
     }

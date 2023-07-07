@@ -21,7 +21,7 @@ switch ($copyType)
             #Составляем список сетевых директорий которые будут скопированы
             Write-Host -fore Green 'Будут скопированны следующие сетевые директории:'
             foreach ($remoteShare in $remoteShares) {  
-                if ( $remoteShare.Name -like '*pocketbot*' -Or $remoteShare.Name -like '*repl*' -Or $remoteShare.Name -like '*market*' ) {
+                if ( $remoteShare.Name -like '*pocketbot*' -Or $remoteShare.Name -like '*repl*' -Or $remoteShare.Name -like '*market*' -Or $remoteShare.Name -like '*ls*' -Or $remoteShare.Name -like '*backup*' ) {
                     Write-Host -fore Green $remoteShare.Path   
                 }
             }
@@ -31,7 +31,7 @@ switch ($copyType)
             foreach ($remoteShare in $remoteShares) { 
                 
                 # Фильтруем сетевые директории по ключевым фразам, которые должны содержаться их в именах  
-                if ( $remoteShare.Name -like '*pocketbot*' -Or $remoteShare.Name -like '*repl*' -Or $remoteShare.Name -like '*market*' ) { 
+                if ( $remoteShare.Name -like '*pocketbot*' -Or $remoteShare.Name -like '*repl*' -Or $remoteShare.Name -like '*market*' -Or $remoteShare.Name -like '*ls*' -Or $remoteShare.Name -like '*backup*' ) { 
 
                         # Проверяем и копируем отсутствующие директории
                         if (-not (Test-Path -Path $remoteShare.Path)) {

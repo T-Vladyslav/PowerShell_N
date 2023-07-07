@@ -11,18 +11,9 @@ $remoteShares = Get-SmbShare -CimSession $serverName #Получаем спис�
 $error_flag = $false
 # Write-Output $remoteShares.Name
 
-#Составляем список сетевых директорий которые будут скопированы
-Write-Host -fore Green 'Будут скопированны следующие сетевые директории:'
-foreach ($remoteShare in $remoteShares) {  
-    if ( $remoteShare.Name -like '*pocketbot*' -Or $remoteShare.Name -like '*repl*' -Or $remoteShare.Name -like '*market*' ) {
-        Write-Host -fore Green $remoteShare.Path   
-    }
-}
-Write-Host '==================================================================================='
-
 # Обрабатываем каждую директорию отдельно
-foreach ($remoteShare in $remoteShares) { 
-    
+foreach ($remoteShare in $remoteShares) {  
+
     # Фильтруем сетевые директории по ключевым фразам, которые должны содержаться их в именах  
     if ( $remoteShare.Name -like '*pocketbot*' -Or $remoteShare.Name -like '*repl*' -Or $remoteShare.Name -like '*market*' ) { 
 
